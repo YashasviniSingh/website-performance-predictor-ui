@@ -1,0 +1,54 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,sans-serif;}
+
+body{
+    background: linear-gradient(135deg, #0F2027, #203A43, #2C5364);
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:30px;
+    color:white;
+}
+
+.glass-card{
+    width:90%;max-width:900px;
+    background: rgba(255,255,255,0.08);
+    padding:40px;border-radius:25px;
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,0.2);
+    box-shadow:0 20px 50px rgba(0,0,0,0.3);
+    text-align:center;
+}
+
+h1{margin-bottom:25px;font-size:32px;font-weight:600;}
+
+.url-input{
+    width:80%;padding:14px;border-radius:12px;border:none;
+    margin-right:12px;font-size:16px;
+}
+
+.predict-btn{
+    padding:14px 20px;border:none;border-radius:12px;
+    background:#4ade80;font-weight:600;font-size:16px;color:black;
+    cursor:pointer;
+}
+
+.prediction-block{margin-top:35px;}
+
+.pred-label{font-size:18px;opacity:.7;}
+.pred-value{margin-top:5px;font-size:54px;font-weight:700;}
+
+.gauge-outer{
+    width:100%;background:rgba(255,255,255,0.1);height:12px;border-radius:6px;
+    margin:22px auto;
+}
+.gauge-inner{
+    height:12px;background:#4ade80;border-radius:6px;
+}
+
+.metrics-title{margin-top:40px;font-size:20px;margin-bottom:10px;}
+
+.metrics-table{
+    width:100%;border-collapse:collapse;font-size:16px;
+}
+.metrics-table th,.metrics-table td{
+    padding:8px;border-bottom:1px solid rgba(255,255,255,0.2);
+}
+
