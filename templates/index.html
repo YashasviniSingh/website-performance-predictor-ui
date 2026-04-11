@@ -1,71 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Performance Conversion Rate Predictor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Performance Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="glass-card">
+<div class="bg"></div>
 
-    <h1>Website Performance Conversion Rate Predictor</h1>
+<div class="container">
+  <div class="card">
+
+    <h1>🚀 Website Performance Predictor</h1>
 
     <form action="/predict" method="post">
-        <input class="url-input" type="url" name="url" placeholder="Paste website URL here..." value="{{ url_value }}" required>
-        <button class="predict-btn" type="submit">Predict</button>
+      <input 
+        type="url" 
+        name="url" 
+        placeholder="Enter website URL..."
+        value="{{ url_value }}"
+        required
+      >
+
+      <button type="submit">Analyze</button>
     </form>
 
     {% if prediction is not none %}
-    <div class="prediction-block" style="margin-top:30px; text-align:center;">
-        <div class="pred-label">Predicted Conversion Rate</div>
-        <div class="pred-value" style="font-size:40px; font-weight:700; color:{{ color }};">
-            {{ '%.2f'|format(prediction) }}%
-        </div>
+    <div class="result">
+      <h2>Performance Score</h2>
 
-        <!-- CIRCULAR GAUGE -->
-        <div style="width:150px;height:150px;margin:0 auto; margin-top:10px;">
-          <svg viewBox="0 0 36 36" style="width:100%;height:100%;">
-            <path
-              stroke="#eee"
-              stroke-width="4"
-              fill="none"
-              d="M18 2.0845
-                 a 15.9155 15.9155 0 0 1 0 31.831
-                 a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-            <path
-              stroke="{{ color }}"
-              stroke-width="4"
-              stroke-dasharray="{{ prediction }}, 100"
-              fill="none"
-              d="M18 2.0845
-                 a 15.9155 15.9155 0 0 1 0 31.831
-                 a 15.9155 15.9155 0 0 1 0 -31.831"
-            />
-          </svg>
+      <div class="progress">
+        <div class="progress-bar" 
+             style="width: {{ gauge_width }}%; background: {{ color }};">
         </div>
+      </div>
+
+      <p class="score">{{ prediction }}%</p>
     </div>
     {% endif %}
 
-    {% if metrics %}
-    <h3 class="metrics-title">Metrics Used</h3>
-    <table class="metrics-table">
-        <thead>
-            <tr><th>Metric</th><th>Value</th></tr>
-        </thead>
-        <tbody>
-        {% for f in features %}
-            <tr>
-                <td>{{ nice[f] }}</td>
-                <td>{{ '%.6f'|format(metrics[f]) }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    {% endif %}
-
+  </div>
 </div>
+
 </body>
 </html>
