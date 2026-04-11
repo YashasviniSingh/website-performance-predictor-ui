@@ -1,109 +1,54 @@
-/* Background */
+/* Smooth page load */
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
-  color: white;
-  overflow-x: hidden;
+  animation: fadeIn 0.8s ease-in;
 }
 
-/* Animated background */
-.bg {
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, #00c6ff, transparent),
-              radial-gradient(circle at 70% 70%, #9333ea, transparent);
-  animation: moveBg 10s infinite alternate;
-  z-index: -1;
-}
-
-@keyframes moveBg {
-  from { transform: translate(0,0); }
-  to { transform: translate(-50px,-50px); }
-}
-
-/* Center layout */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-/* Glass card */
+/* Card animation */
 .card {
-  backdrop-filter: blur(20px);
-  background: rgba(255,255,255,0.05);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  width: 400px;
-  animation: fadeIn 1s ease-in;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Title */
-h1 {
-  margin-bottom: 20px;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-/* Input */
-input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  margin-bottom: 15px;
+/* Input focus glow */
+input:focus {
   outline: none;
+  box-shadow: 0 0 10px #00c6ff;
+  transition: 0.3s;
 }
 
-/* Button */
+/* Button animation */
 button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(45deg, #00c6ff, #9333ea);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 button:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 15px #00c6ff;
 }
 
-/* Result section */
+/* Result animation */
 .result {
-  margin-top: 20px;
   animation: slideUp 0.5s ease;
 }
 
-/* Progress bar */
-.progress {
-  width: 100%;
-  height: 10px;
-  background: rgba(255,255,255,0.1);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
+/* Progress animation */
 .progress-bar {
-  height: 100%;
-  transition: width 1s ease-in-out;
+  transition: width 1.2s ease-in-out;
 }
 
-/* Score text */
+/* Score pop effect */
 .score {
-  font-size: 24px;
-  margin-top: 10px;
+  animation: pop 0.4s ease;
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
@@ -111,3 +56,7 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes pop {
+  from { transform: scale(0.8); }
+  to { transform: scale(1); }
+}
